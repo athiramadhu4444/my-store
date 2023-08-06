@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    {% load static %}
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <nav class="main_nav">
+        <ul class="d-flex flex-row align-items-start justify-content-start">
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'registration' %}">Register</a></li>
+            <li class="dropdown">
+                    <select id="department" onchange="window.open(this.value)">
+                        <option value="" disabled selected>Select Department</option>
+                        <option value="https://en.wikipedia.org/wiki/Science">Science</option>
+                        <option value="https://en.wikipedia.org/wiki/Commerce">Commerce</option>
+                        <option value="https://en.wikipedia.org/wiki/Arts">Arts</option>
+                        <option value="https://en.wikipedia.org/wiki/Music">Music</option>
+                        <option value="https://en.wikipedia.org/wiki/Musical_instrument">Instruments</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="main_content">
+        <h1>Welcome to the College Store Website</h1>
+        <h2>Explore Our Products and Services</h2>
+
+    <!-- Add the "Login to Our Page" button here -->
+       <button onclick="location.href='{% url 'login' %}'">Login to Our Page</button>
+    </div>
+
+    <!-- Rest of the homepage content goes here -->
+
+    <script>
+       document.addEventListener('DOMContentLoaded', function(){
+         const backgroundDiv = document.querySelector('college.jpg');
+         backgroundDiv.style.backgroundImage = 'url("static/images/college.jpg")';
+        // JavaScript logic for displaying the department dropdown
+        document.querySelector('.dropbtn').addEventListener('click', function () {
+            document.querySelector('.dropdown-content').classList.toggle('show');
+        });
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName('dropdown-content');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+          }
+        });
+    </script>
+</body>
+
+</html>
